@@ -1,5 +1,6 @@
 import os
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,7 +21,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'oc_lettings_site.apps.OCLettingsSiteConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -29,7 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'lettings',
     'profiles',
-    'home'
+    'home',
 ]
 
 MIDDLEWARE = [
@@ -68,11 +68,14 @@ WSGI_APPLICATION = 'oc_lettings_site.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'oc-lettings-site.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': str(os.getenv('DB_NAME')),
+        'USER': str(os.getenv('DB_USER')),
+        'PASSWORD': str(os.getenv('DB_PASSWORD')),
+        'HOST': str(os.getenv('DB_HOST')),
+        'PORT': str(os.getenv('DB_PORT'))
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -111,3 +114,20 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+# if DEBUG:
+#     MIDDLEWARE += [
+#         'debug_toolbar.middleware.DebugToolbarMiddleware',
+#     ]
+#     INSTALLED_APPS += [
+#         'debug_toolbar',
+#     ]
+#     INTERNAL_IPS = ['127.0.0.1', ]
+#
+#     # this is the main reason for not showing up the toolbar
+#     # import mimetypes
+#     # mimetypes.add_type("application/javascript", ".js", True)
+#
+#     DEBUG_TOOLBAR_CONFIG = {
+#         'INTERCEPT_REDIRECTS': False,
+#     }
