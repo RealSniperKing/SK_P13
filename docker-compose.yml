@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./docker-entrypoint-initdb.d/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=ocl_database
+      - POSTGRES_USER=ocl_user
+      - POSTGRES_PASSWORD=ocl_password
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/code
+    env_file:
+      - .env
+    depends_on:
+      - db
