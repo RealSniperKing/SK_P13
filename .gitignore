@@ -4,3 +4,7 @@ venv
 .idea
 .env
 tables
+save
+sql_to_psql
+data
+oc-lettings-site.sqlite3
