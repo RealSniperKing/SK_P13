@@ -4,6 +4,9 @@ jobs:
   pytest-and-flake:
     docker:
       - image: cimg/python:3.9.1
+      - image: cimg/postgres:14.1
+        environment:
+          POSTGRES_USER: example
     steps:
       - checkout
       - run:
