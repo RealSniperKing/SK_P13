@@ -1,5 +1,3 @@
-from django.contrib.auth.models import User
-from django.test import TestCase
 import pytest
 from django.urls import reverse
 from django.test import Client
@@ -23,11 +21,11 @@ def test_lettings_index():
 def test_lettings_letting():
     # user_ob = User.objects.create_user(username="test", password="123456")
     adress_ob = Address.objects.create(number="7217",
-                                    street="Bedford Street",
-                                    city="Brunswick",
-                                    state="GA",
-                                    zip_code="31525",
-                                    country_iso_code="USA")
+                                       street="Bedford Street",
+                                       city="Brunswick",
+                                       state="GA",
+                                       zip_code="31525",
+                                       country_iso_code="USA")
 
     letting_title = "Letting_test"
     letting = Letting.objects.create(title=letting_title, address_id=adress_ob.pk)

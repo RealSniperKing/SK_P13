@@ -1,5 +1,4 @@
 from django.contrib.auth.models import User
-from django.test import TestCase
 import pytest
 from django.urls import reverse
 from django.test import Client
@@ -25,6 +24,7 @@ def test_profiles_profile():
     user_ob = User.objects.create_user(username=username, password="123456")
 
     profile = Profile.objects.create(user=user_ob, favorite_city="Rome")
+    print("profile = ", profile)
 
     url = reverse('profiles:profile', kwargs={"username": user_ob.username})
     response = Client().get(url)

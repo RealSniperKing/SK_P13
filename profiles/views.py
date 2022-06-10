@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from lettings.models import Letting
 from profiles.models import Profile
+
 
 # Sed placerat quam in pulvinar commodo.
 # Nullam laoreet consectetur ex, sed consequat libero pulvinar eget. Fusc
