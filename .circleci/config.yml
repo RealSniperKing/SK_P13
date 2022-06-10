@@ -11,7 +11,7 @@ jobs:
           command: pip install -r requirements.txt
       - run:
           name: flake8 checker
-          command: flake8 ./ tests --output-file test-reports.txt
+          command: flake8 ./ --output-file test-reports.txt
       - run:
           name: run tests
           command: pytest -s
