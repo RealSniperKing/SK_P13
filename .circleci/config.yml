@@ -10,9 +10,6 @@ jobs:
           name: install dependencies
           command: pip install -r requirements.txt
       - run:
-          name: flake8 checker
-          command: flake8
-      - run:
           name: run tests
           command: python manage.py pytest
 
