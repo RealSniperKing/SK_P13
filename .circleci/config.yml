@@ -10,6 +10,8 @@ jobs:
           POSTGRES_PASSWORD: $DB_PASSWORD
     steps:
       - checkout
+      - run: sudo apt-get update
+      - run: sudo apt-get install postgresql-client
       - run:
             name: check test environment variable
             command: echo $DB_TEST
