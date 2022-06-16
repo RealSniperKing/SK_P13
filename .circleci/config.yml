@@ -14,11 +14,14 @@ jobs:
           name : system update
           command : sudo apt-get update
       - run:
-            name : install system packages
-            command : sudo apt-get install postgresql-client
+          name : install system packages
+          command : sudo apt-get install postgresql-client
       - run:
-            name: check TEST environment variable
-            command: echo $DB_TEST
+          name : add psql user
+          command : sudo -u postgres createuser -s $DB_USER
+      - run:
+          name: check TEST environment variable
+          command: echo $DB_TEST
       - run:
           name: install python packages
           command: pip install -r requirements.txt
