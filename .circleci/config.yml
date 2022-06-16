@@ -18,6 +18,7 @@ jobs:
           command : sudo apt-get install postgresql-client
       - run: |
           sudo adduser --no-create-home $DB_USER
+          echo ""$DB_USER":"$LX_PASSWORD"" | chpasswd
           sudo -u postgres psql
           sudo -u postgres createuser $DB_USER
           sudo -u postgres createdb $DB_NAME
