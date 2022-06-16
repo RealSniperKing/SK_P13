@@ -17,7 +17,7 @@ jobs:
           name : install system packages
           command : sudo apt-get install postgresql-client
       - run: |
-          sudo adduser $DB_USER
+          sudo adduser --no-create-home $DB_USER
           sudo -u postgres psql
           sudo -u postgres createuser $DB_USER
           sudo -u postgres createdb $DB_NAME
