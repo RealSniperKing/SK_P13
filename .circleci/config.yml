@@ -11,6 +11,9 @@ jobs:
     steps:
       - checkout
       - run:
+            name: check test environment variable
+            command: echo $DB_TEST
+      - run:
           name: install dependencies
           command: pip install -r requirements.txt
       - run:
