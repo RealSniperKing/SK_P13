@@ -17,9 +17,6 @@ jobs:
           name : install system packages
           command : sudo apt-get install postgresql-client
       - run:
-          name : add psql user
-          command : sudo psql -U postgres; CREATE USER $DB_USER WITH ENCRYPTED PASSWORD $DB_PASSWORD;
-      - run:
           name: check TEST environment variable
           command: echo $DB_TEST
       - run:
