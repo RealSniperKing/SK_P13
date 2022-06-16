@@ -11,22 +11,24 @@ jobs:
     steps:
       - checkout
       - run: sudo apt-get update
-      - run: sudo apt-get install postgresql-client
+      - run:
+            name : install systemen packages
+            command : sudo apt-get install postgresql-client
       - run:
             name: check TEST environment variable
             command: echo $DB_TEST
       - run:
-          name: install dependencies
+          name: install python packages
           command: pip install -r requirements.txt
       - run:
           name: flake8 checker
           command: flake8 ./ --output-file test-reports.txt
       - run:
-          name: running migrations
-          command: python manage.py migrate
-      - run:
           name: run tests
           command: pytest -s
+      - run:
+          name: running migrations
+          command: python manage.py migrate
 
 workflows:
   build-and-test-workflow:
