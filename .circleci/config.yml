@@ -29,11 +29,12 @@ jobs:
           name: flake8 checker
           command: flake8 ./ --output-file test-reports.txt
       - run:
-          name: run tests
-          command: pytest -s
-      - run:
           name: running migrations
           command: python manage.py migrate
+      - run:
+          name: run tests
+          command: pytest -s
+
 
 workflows:
   build-and-test-workflow:
