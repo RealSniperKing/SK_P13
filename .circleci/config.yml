@@ -10,7 +10,9 @@ jobs:
           DB_PASSWORD: $DB_PASSWORD
     steps:
       - checkout
-      - run: sudo apt-get update
+      - run:
+          name : system update
+          command : sudo apt-get update
       - run:
             name : install system packages
             command : sudo apt-get install postgresql-client
