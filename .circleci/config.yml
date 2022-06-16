@@ -16,6 +16,14 @@ jobs:
       - run:
           name : install system packages
           command : sudo apt-get install postgresql-client
+      - run |
+          sudo -u postgres psql
+          sudo -u postgres createuser $DB_USER
+          sudo -u postgres createdb $DB_NAME
+          sudo -u postgres psql
+          psql=# alter user $DB_USER with encrypted password $DB_PASSWORD;
+          psql=# grant all privileges on database $DB_NAME to $DB_USER ;
+
       - run:
           name: check TEST environment variable
           command: echo $DB_TEST
