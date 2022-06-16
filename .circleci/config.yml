@@ -12,7 +12,7 @@ jobs:
       - checkout
       - run: sudo apt-get update
       - run:
-            name : install systemen packages
+            name : install system packages
             command : sudo apt-get install postgresql-client
       - run:
             name: check TEST environment variable
