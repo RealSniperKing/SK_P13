@@ -17,6 +17,7 @@ jobs:
       - run: psql --version
       - run: |
           psql -h /tmp
+          psql --port=$DB_PORT
           psql -c "CREATE USER $DB_USER WITH PASSWORD $DB_PASSWORD;"
           psql -c "GRANT ALL PRIVILEGES ON DATABASE $TEST_DATABASE_URL TO $DB_USER;"
       - run:
