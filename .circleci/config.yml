@@ -3,18 +3,27 @@ version: 2.1
 jobs:
   pytest-and-flake:
     docker:
-      - image: cimg/python:3.9.1
+      - image: circleci/python:3.9.1
         environment:
-          TEST_DATABASE_URL: postgresql://postgres@localhost/circle_test
-      - image: cimg/postgres:14.1
+          ENV: CIRCLE
+          DATABASE_URL: postgresql://circleci@localhost/circle_test
+      - image: circleci/postgres:14.1
         environment:
-          DB_USER: $DB_USER
+          PGHOST: localhost
+          PGUSER: circleci
+          DB_USER: circleci
           DB_PASSWORD: $DB_PASSWORD
+          DB_NAME: circle_test
     steps:
       - checkout
       - run: sudo apt-get update
       - run: sudo apt-get install postgresql-client
       - run: psql --version
+      - run: |
+          psql -h localhost -p 5432
+          psql -c "CREATE USER $DB_USER WITH PASSWORD $DB_PASSWORD;"
+          psql -c "GRANT ALL PRIVILEGES ON DATABASE $TEST_DATABASE_URL TO $DB_USER;"
+          psql -c "ALTER ROLE $DB_USER WITH LOGIN;"
       - run:
           name: check TEST environment variable
           command: echo $DB_TEST
