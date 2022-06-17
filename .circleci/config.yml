@@ -33,12 +33,14 @@ jobs:
       - run:
           name: run tests
           command: pytest -s
-      - run:
-          name: run server
-          command: python manage.py runserver
-
 
 workflows:
   build-and-test-workflow:
     jobs:
       - pytest-and-flake
+      - heroku/deploy-via-git:
+          requires:
+            - pytest-and-flake
+          filters:
+            branches:
+              only: main
