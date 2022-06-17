@@ -3,17 +3,14 @@ version: 2.1
 jobs:
   pytest-and-flake:
     docker:
-      - image: circleci/python:3.9.1
+      - image: cimg/python:3.9.1
         environment:
-          ENV: CIRCLE
-          DATABASE_URL: postgresql://circleci@localhost/circle_test
-      - image: circleci/postgres:14.1
+          DATABASE_URL: postgresql://postgres@localhost/database
+      - image: cimg/postgres:14.1
         environment:
-          PGHOST: localhost
-          PGUSER: circleci
-          DB_USER: circleci
+          DB_USER: $DB_USER
           DB_PASSWORD: $DB_PASSWORD
-          DB_NAME: circle_test
+          DB_NAME: $DB_NAME
     steps:
       - checkout
       - run: sudo apt-get update
