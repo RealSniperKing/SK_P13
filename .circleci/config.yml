@@ -18,7 +18,6 @@ jobs:
       - run: |
           psql -h /tmp
           psql --port=$DB_PORT
-          psql -c "ALTER ROLE $DB_USER WITH LOGIN;"
       - run:
           name: check TEST environment variable
           command: echo $DB_TEST
