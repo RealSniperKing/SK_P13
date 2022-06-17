@@ -18,8 +18,7 @@ jobs:
       - run: |
           psql -h /tmp
           psql --port=$DB_PORT
-          psql -c "CREATE USER $DB_USER WITH PASSWORD $DB_PASSWORD;"
-          psql -c "GRANT ALL PRIVILEGES ON DATABASE $TEST_DATABASE_URL TO $DB_USER;"
+          psql -c "ALTER ROLE $DB_USER WITH LOGIN;"
       - run:
           name: check TEST environment variable
           command: echo $DB_TEST
