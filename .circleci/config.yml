@@ -19,11 +19,9 @@ jobs:
       - run: |
           sudo useradd -m -p $LX_PASSWORD -s /bin/bash postgres
           sudo -u postgres psql
-          sudo -u postgres createuser $DB_USER
-          sudo -u postgres createdb $DB_NAME
-          sudo -u postgres psql
-          psql=# alter user $DB_USER with encrypted password $DB_PASSWORD;
-          psql=# grant all privileges on database $DB_NAME to $DB_USER ;
+          CREATE USER $DB_USER WITH PASSWORD $DB_PASSWORD;
+          CREATE DATABASE $DB_NAME;
+          GRANT ALL PRIVILEGES ON DATABASE $DB_NAME TO $DB_USER;
 
       - run:
           name: check TEST environment variable
