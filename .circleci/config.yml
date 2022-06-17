@@ -12,14 +12,10 @@ jobs:
           DB_PASSWORD: $DB_PASSWORD
     steps:
       - checkout
-      - run:
-          name : system update
-          command : sudo apt-get update
-      - run:
-          name : install system packages
-          command : sudo apt-get install postgresql-client
+      - run: sudo apt-get update
+      - run: sudo apt-get install postgresql-client
+      - run: whoami
       - run: |
-          sudo useradd -m -p $LX_PASSWORD -s /bin/bash postgres
           psql -c "CREATE USER $DB_USER WITH PASSWORD $DB_PASSWORD;"
           psql -c "GRANT ALL PRIVILEGES ON DATABASE $TEST_DATABASE_URL TO $DB_USER;"
       - run:
