@@ -6,7 +6,7 @@ jobs:
       - image: circleci/python:3.9.1
         environment:
           DATABASE_URL: postgresql://postgres@localhost/database
-      - image: circleci/postgres:14.1
+      - image: cimg/postgres:14.1
         environment:
           DB_USER: $DB_USER
           DB_PASSWORD: $DB_PASSWORD
