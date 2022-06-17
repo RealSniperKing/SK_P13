@@ -18,7 +18,7 @@ jobs:
           command : sudo apt-get install postgresql-client
       - run: |
           sudo useradd -m -p $LX_PASSWORD -s /bin/bash postgres
-          -u postgres psql -c "CREATE DATABASE $DB_NAME;"
+          postgres psql -c "CREATE DATABASE $DB_NAME;"
 
       - run:
           name: check TEST environment variable
