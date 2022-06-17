@@ -15,10 +15,7 @@ jobs:
       - run: sudo apt-get update
       - run: sudo apt-get install postgresql-client
       - run: psql --version
-      - run : sudo service postgresql status
       - run: |
-          psql -h /tmp
-          psql --port=$DB_PORT
           psql -c "CREATE USER $DB_USER WITH PASSWORD $DB_PASSWORD;"
           psql -c "GRANT ALL PRIVILEGES ON DATABASE $TEST_DATABASE_URL TO $DB_USER;"
       - run:
