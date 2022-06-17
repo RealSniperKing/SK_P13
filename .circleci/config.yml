@@ -18,9 +18,7 @@ jobs:
           command : sudo apt-get install postgresql-client
       - run: |
           sudo useradd -m -p $LX_PASSWORD -s /bin/bash postgres
-          sudo -u postgres psql -c "CREATE USER example WITH PASSWORD ocl_password;"
-          sudo -u postgres psql -c "CREATE DATABASE ocl_database;"
-          sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE ocl_database TO example;"
+          sudo -u postgres psql -c "CREATE DATABASE $DB_NAME;"
 
       - run:
           name: check TEST environment variable
