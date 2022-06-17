@@ -4,6 +4,8 @@ jobs:
   pytest-and-flake:
     docker:
       - image: cimg/python:3.9.1
+        environment:
+          TEST_DATABASE_URL: postgresql://postgres@localhost/circle_test
       - image: cimg/postgres:14.1
         environment:
           DB_USER: $DB_USER
@@ -19,8 +21,7 @@ jobs:
       - run: |
           sudo useradd -m -p $LX_PASSWORD -s /bin/bash postgres
           psql -c "CREATE USER $DB_USER WITH PASSWORD $DB_PASSWORD;"
-          psql -c "CREATE DATABASE $DB_NAME;"
-          psql -c "GRANT ALL PRIVILEGES ON DATABASE $DB_NAME TO $DB_USER;"
+          psql -c "GRANT ALL PRIVILEGES ON DATABASE $TEST_DATABASE_URL TO $DB_USER;"
 
       - run:
           name: check TEST environment variable
