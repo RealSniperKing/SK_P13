@@ -2,10 +2,8 @@
 FROM python:3.9.6-alpine
 
 # Install postgres client
-RUN apk add --update --no-cache postgresql-client
-
-# Install libpq-dev in Ubuntu to fix error : error pg_config executable not found.
-RUN apt-get install libpq-dev
+RUN apk update
+RUN apk add postgresql-dev gcc python3-dev musl-dev
 
 #maintainer
 LABEL Author="Luc"
