@@ -19,3 +19,4 @@ services:
       - .:/code
     depends_on:
       - db
+    image: $DOCKER_REPO
