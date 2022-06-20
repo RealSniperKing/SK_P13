@@ -38,7 +38,8 @@ jobs:
       # build and push Docker image
       - run: |
           TAG=0.1.$CIRCLE_BUILD_NUM
-          docker-compose up
+          docker-compose build
+          docker-compose up -d
 
 workflows:
   build-and-test-workflow:
