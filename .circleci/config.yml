@@ -5,9 +5,6 @@ jobs:
   pytest-and-flake:
     docker:
       - image: cimg/python:3.9.1
-        auth:
-          username: DOCKERHUB_USER
-          password: $DOCKERHUB_PASSWORD
       - image: cimg/postgres:14.1
         environment:
           DB_USER: $DB_USER
