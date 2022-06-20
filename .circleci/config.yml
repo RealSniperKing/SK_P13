@@ -38,8 +38,10 @@ jobs:
       # build and push Docker image
       - run: |
           TAG=0.1.$CIRCLE_BUILD_NUM
-          docker-compose build
-          docker-compose up -d
+          docker login -u $DOCKER_USER -p $DOCKER_PASS
+          docker-compose build --pull
+          docker-compose push
+          docker logout
 
 workflows:
   build-and-test-workflow:
