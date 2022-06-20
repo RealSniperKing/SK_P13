@@ -2,14 +2,15 @@ version: "3.9"
 
 services:
   db:
-    image: postgres
+    image: $DOCKER_REPO
+    container_name: ocl_postgres
     volumes:
       - ./docker-entrypoint-initdb.d/init.sql:/docker-entrypoint-initdb.d/init.sql
       - ./data/db:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=ocl_database
-      - POSTGRES_USER=ocl_user
-      - POSTGRES_PASSWORD=ocl_password
+      - POSTGRES_DB=$DB_NAME
+      - POSTGRES_USER=$DB_USER
+      - POSTGRES_PASSWORD=$DB_PASSWORD
   web:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
@@ -20,3 +21,4 @@ services:
     depends_on:
       - db
     image: $DOCKER_REPO
+    container_name: ocl_web
