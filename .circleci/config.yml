@@ -11,33 +11,11 @@ jobs:
           DB_PASSWORD: $DB_PASSWORD
     steps:
       - checkout
-      - run: sudo apt-get update
-      - run: sudo apt-get install postgresql-client
-      - run: psql --version
-      - run: |
-          psql -h localhost -U postgres -c "CREATE USER $DB_USER WITH PASSWORD '$DB_PASSWORD';"
-          psql -h localhost -U postgres -c "CREATE DATABASE $DB_NAME;"
-          psql -h localhost -U postgres -c "GRANT ALL PRIVILEGES ON DATABASE $DB_NAME TO $DB_USER;"
-          psql -h localhost -U postgres -c "ALTER USER $DB_USER CREATEDB;"
+      - setup_remote_docker
       - run:
-          name: check TEST environment variable
-          command: echo $DB_TEST
-      - run:
-          name: install python packages
-          command: pip install -r requirements.txt
-      - run:
-          name: flake8 checker
-          command: flake8 ./ --output-file test-reports.txt
-      - run:
-          name: running migrations
-          command: python manage.py migrate
-      - run:
-          name: run tests
-          command: pytest -s
-      - run: sudo service docker start
-      - run:
-          name: install docker client
-          command: docker version
+          name: Build Docker image
+          command: docker build --tag helloworld .
+
 
 workflows:
   build-and-test-workflow:
