@@ -20,3 +20,4 @@ services:
     depends_on:
       - db
     image: $DOCKER_REPO
+    container_name: web_ocl
