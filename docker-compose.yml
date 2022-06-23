@@ -4,7 +4,7 @@ services:
   db:
     image: postgres
     volumes:
-      - ./docker-entrypoint-initdb.d/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./docker-entrypoint-initdb.d/init.sql:/docker-entrypoint-initdb.d/init_db.sh
       - ./data/db:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=ocl_database
