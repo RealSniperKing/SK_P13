@@ -62,7 +62,15 @@ jobs:
           command: |
             docker-compose down -v
             docker-compose up -d
-
+      - run:
+          name: prepare database
+          command: |
+            while ! docker exec database mysql -e 'select 1=1' -proot $DB_NAME; do
+              echo "waiting for database"
+              sleep 2
+            done
+            docker cp test/resources/init.sql database:/init.sql
+            docker exec database mysql -e 'source /init.sql' -proot $DB_NAME
 
 workflows:
   build-and-test-workflow:
