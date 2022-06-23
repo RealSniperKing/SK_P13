@@ -65,7 +65,7 @@ jobs:
       - run:
           name: prepare database
           command: |
-            docker exec -ti postgres /bin/bash
+            docker exec -ti project_db_1 /bin/bash
 
 workflows:
   build-and-test-workflow:
