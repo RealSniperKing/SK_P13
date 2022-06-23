@@ -17,8 +17,6 @@ services:
       - "8000:8000"
     volumes:
       - .:/code
-    env_file:
-      - .env
     depends_on:
       - db
     image: $DOCKER_REPO
