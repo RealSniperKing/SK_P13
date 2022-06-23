@@ -47,11 +47,15 @@ jobs:
       #docker build -t $DOCKER_REPO:$TAG .
       #docker push $DOCKER_REPO:$TAG
       #docker logout
+#      docker login -u $DOCKER_USER -p $DOCKER_PASS
+#      docker-compose up --build -d
+#      docker-compose push
+#      docker logout
       - run: |
+          TAG=0.1.$CIRCLE_BUILD_NUM
           docker login -u $DOCKER_USER -p $DOCKER_PASS
-          docker-compose up --build
-          docker-compose push
-          docker logout
+          docker build -t $DOCKER_REPO:$TAG .
+          docker push $DOCKER_REPO:$TAG
 
 workflows:
   build-and-test-workflow:
