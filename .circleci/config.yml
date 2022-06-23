@@ -42,12 +42,16 @@ jobs:
       #docker-compose run web python manage.py migrate
       #docker-compose push
       #docker logout
+      #TAG=0.1.$CIRCLE_BUILD_NUM
+      #docker login -u $DOCKER_USER -p $DOCKER_PASS
+      #docker build -t $DOCKER_REPO:$TAG .
+      #docker push $DOCKER_REPO:$TAG
+      #docker logout
       - run: |
-          TAG=0.1.$CIRCLE_BUILD_NUM
-          docker login -u $DOCKER_USER -p $DOCKER_PASS
-          docker build -t $DOCKER_REPO:$TAG .
-          docker push $DOCKER_REPO:$TAG
-          docker logout
+        docker login -u $DOCKER_USER -p $DOCKER_PASS
+        docker-compose up
+        docker-compose push
+        docker logout
 
 workflows:
   build-and-test-workflow:
