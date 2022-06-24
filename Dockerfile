@@ -13,6 +13,9 @@ RUN mkdir /Python-OC-Lettings-FR
 WORKDIR /Python-OC-Lettings-FR
 COPY . .
 
+FROM postgres:buster
+COPY init.sh /docker-entrypoint-initdb.d/
+
 # set environment variables
 # means Python will not try to write .pyc files
 ENV PYTHONDONTWRITEBYTECODE=1
