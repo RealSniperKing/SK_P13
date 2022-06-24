@@ -32,5 +32,5 @@ USER user
 
 FROM postgres:buster
 
-COPY docker-entrypoint-initdb.d/init.sql /docker-entrypoint-initdb.d
-RUN chmod a+r /docker-entrypoint-initdb.d/*
+#COPY docker-entrypoint-initdb.d/init.sql /docker-entrypoint-initdb.d
+#RUN chmod a+r /docker-entrypoint-initdb.d/*
