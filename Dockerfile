@@ -12,8 +12,6 @@ LABEL Author="Luc"
 RUN mkdir /Python-OC-Lettings-FR
 WORKDIR /Python-OC-Lettings-FR
 COPY . .
-COPY docker-entrypoint.sh /usr/local/bin
-RUN ln -s usr/local/bin/docker-entrypoint.sh /
 
 # set environment variables
 # means Python will not try to write .pyc files
@@ -33,5 +31,6 @@ RUN adduser -D user
 USER user
 
 FROM postgres:buster
+
 COPY docker-entrypoint-initdb.d/init.sql /docker-entrypoint-initdb.d
 RUN chmod a+r /docker-entrypoint-initdb.d/*
