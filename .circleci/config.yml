@@ -56,7 +56,7 @@ jobs:
           command: docker-compose build
       - run:
           name: Start all services declared in docker-compose.yml
-          command: docker-compose up -d
+          command: docker-compose up
 
 workflows:
   build-and-test-workflow:
