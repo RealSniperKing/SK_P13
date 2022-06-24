@@ -13,9 +13,6 @@ RUN mkdir /Python-OC-Lettings-FR
 WORKDIR /Python-OC-Lettings-FR
 COPY . .
 
-FROM postgres:buster
-COPY init.sh /docker-entrypoint-initdb.d/
-
 # set environment variables
 # means Python will not try to write .pyc files
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -29,7 +26,9 @@ COPY ./requirements_docker.txt ./requirements.txt
 RUN pip install --upgrade pip
 RUN pip install -r requirements_docker.txt
 
-
 # Create a user that can run your container
 RUN adduser -D user
 USER user
+
+FROM postgres:buster
+COPY init.sh /docker-entrypoint-initdb.d/
