@@ -34,7 +34,6 @@ jobs:
       - run:
          name: run tests
          command: pytest -s
-      - setup_remote_docker
       # build and push Docker image
       #TAG=0.1.$CIRCLE_BUILD_NUM
       #docker login -u $DOCKER_USER -p $DOCKER_PASS
@@ -51,21 +50,21 @@ jobs:
 #      docker-compose up --build -d
 #      docker-compose push
 #      docker logout
+      - setup_remote_docker
       - run:
-          name: Build test image
+          name: Test build only web image
           command: |
             TAG=0.1.$CIRCLE_BUILD_NUM
             docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker build -t $DOCKER_REPO:$TAG .
-      - run:
-          name: Spin up database
-          command: |
-            docker-compose down -v
-            docker-compose up -d
-      - run:
-          name: push
-          command: |
             docker-compose push
+            docker logout
+      - run:
+          name: Build images of services declared in docker-compose.yml
+          command: docker-compose build
+      - run:
+          name: Start all services declared in docker-compose.yml
+          command: docker-compose up -d
 
 workflows:
   build-and-test-workflow:
