@@ -3,6 +3,7 @@ version: "3.9"
 services:
   db:
     image: postgres:buster
+    container_name: ocl-db-postgres
     volumes:
       - ./docker-entrypoint-initdb.d/init.sh:/docker-entrypoint-initdb.d/
       - ./data/db:/var/lib/postgresql/data
@@ -11,6 +12,7 @@ services:
       - POSTGRES_USER=ocl_user
       - POSTGRES_PASSWORD=ocl_password
   web:
+    container_name: ocl-web
     build: .
     command: python manage.py runserver 0.0.0.0:8000
     ports:
