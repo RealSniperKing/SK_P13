@@ -52,14 +52,6 @@ jobs:
 #      docker logout
       - setup_remote_docker
       - run:
-          name: Test build only web image
-          command: |
-            TAG=0.1.$CIRCLE_BUILD_NUM
-            docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker build -t $DOCKER_REPO:$TAG .
-            docker-compose push
-            docker logout
-      - run:
           name: Build images of services declared in docker-compose.yml
           command: docker-compose build
       - run:
