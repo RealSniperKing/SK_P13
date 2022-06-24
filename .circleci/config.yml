@@ -58,13 +58,10 @@ jobs:
             docker-compose build
       - run:
           name: Start all services declared in docker-compose.yml
-          command: docker-compose up -d
+          command: docker-compose up
       - run:
           name: docker stat
           command: docker-compose ps
-      - run:
-          name: run db
-          command: docker-compose run ocl-db-postgres
 #      - run:
 #          name: init db
 #          command: |
