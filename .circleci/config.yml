@@ -59,11 +59,11 @@ jobs:
             echo -e "SECRET_KEY=$SECRET_KE \nDB_NAME=$DB_NAME \nDB_USER=$DB_USER \nDB_PASSWORD=$DB_PASSWORD \nDB_HOST=db \nDB_PORT=$DB_PORT" >> .env
             ls -a
       - run: psql --version
-               - run: |
-               psql -h localhost -U postgres -c "CREATE USER $DB_USER WITH PASSWORD '$DB_PASSWORD';"
-               psql -h localhost -U postgres -c "CREATE DATABASE $DB_NAME;"
-               psql -h localhost -U postgres -c "GRANT ALL PRIVILEGES ON DATABASE $DB_NAME TO $DB_USER;"
-               psql -h localhost -U postgres -c "ALTER USER $DB_USER CREATEDB;"
+      - run: |
+      psql -h localhost -U postgres -c "CREATE USER $DB_USER WITH PASSWORD '$DB_PASSWORD';"
+      psql -h localhost -U postgres -c "CREATE DATABASE $DB_NAME;"
+      psql -h localhost -U postgres -c "GRANT ALL PRIVILEGES ON DATABASE $DB_NAME TO $DB_USER;"
+      psql -h localhost -U postgres -c "ALTER USER $DB_USER CREATEDB;"
       - run:
           name: build
           command: docker-compose build
