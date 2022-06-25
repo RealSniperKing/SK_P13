@@ -25,7 +25,6 @@ steps:
   - name: Checkout source
   uses: actions/checkout@v1
   - name: Create role
-  run: |
-    docker exec ocl-db-postgres bash -c "CREATE USER example WITH PASSWORD 'ocl_password';"
-    docker exec ocl-db-postgres bash -c "CREATE DATABASE ocl_database;"
-    docker exec ocl-db-postgres bash -c "GRANT ALL PRIVILEGES ON DATABASE ocl_database TO example;"
+  run: docker exec ocl-db-postgres bash -c "CREATE USER example WITH PASSWORD 'ocl_password';"
+  run: docker exec ocl-db-postgres bash -c "CREATE DATABASE ocl_database;"
+  run: docker exec ocl-db-postgres bash -c "GRANT ALL PRIVILEGES ON DATABASE ocl_database TO example;"
