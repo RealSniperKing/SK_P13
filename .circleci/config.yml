@@ -54,13 +54,7 @@ jobs:
           version: 20.10.14
       - run:
           name: init env
-          command: |
-            docker-compose run -e SECRET_KEY=$SECRET_KEY web
-            docker-compose run -e DB_NAME=$DB_NAME web
-            docker-compose run -e DB_USER=$DB_USER web
-            docker-compose run -e DB_PASSWORD=$DB_PASSWORD web
-            docker-compose run -e DB_HOST=$DB_HOST web
-            docker-compose run -e DB_PORT=$DB_PORT web
+          command: echo -e "SECRET_KEY=$SECRET_KE \nDB_NAME=$DB_NAME \nDB_USER=$DB_USER \nDB_PASSWORD=$DB_PASSWORD \nDB_HOST=$DB_HOST \nDB_PORT=$DB_PORT" >> /Python-OC-Lettings-FR/.env
       - run:
           name: build
           command: docker-compose build
