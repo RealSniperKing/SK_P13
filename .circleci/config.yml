@@ -53,9 +53,8 @@ jobs:
       - setup_remote_docker:
           version: 20.10.14
       - run:
-          name: Build images of services declared in docker-compose.yml
-          command: |
-            docker-compose rm
+          name: build
+          command: docker-compose build
       - run:
           name: Start all services declared in docker-compose.yml
           command: docker-compose up
