@@ -61,13 +61,12 @@ jobs:
       - run:
           name: docker stat
           command: docker-compose ps
-#      - run:
-#          name: init db
-#          command: |
-#            docker exec -it ocl-db-postgres psql -h localhost -U postgres -c "CREATE USER $DB_USER WITH PASSWORD '$DB_PASSWORD';"
-#            docker exec -it ocl-db-postgres psql -h localhost -U postgres -c "CREATE DATABASE $DB_NAME;"
-#            docker exec -it ocl-db-postgres psql -h localhost -U postgres -c "GRANT ALL PRIVILEGES ON DATABASE $DB_NAME TO $DB_USER;"
-#            docker exec -it ocl-db-postgres psql -h localhost -U postgres -c "ALTER USER $DB_USER CREATEDB;"
+      - run:
+          name: init db
+          command: |
+            docker exec -it ocl-db-postgres psql -h localhost -U postgres -c "CREATE USER $DB_USER WITH PASSWORD '$DB_PASSWORD';"
+            docker exec -it ocl-db-postgres psql -h localhost -U postgres -c "CREATE DATABASE $DB_NAME;"
+            docker exec -it ocl-db-postgres psql -h localhost -U postgres -c "GRANT ALL PRIVILEGES ON DATABASE $DB_NAME TO $DB_USER;"
 
 workflows:
   build-and-test-workflow:
