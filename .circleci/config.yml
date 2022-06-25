@@ -56,12 +56,12 @@ jobs:
           name: build
           command: |
             docker-compose build
-            docker-compose run -e SECRET_KEY=$SECRET_KEY web python console.py
-            docker-compose run -e DB_NAME=$DB_NAME web python console.py
-            docker-compose run -e DB_USER=$DB_USER web python console.py
-            docker-compose run -e DB_PASSWORD=$DB_PASSWORD web python console.py
-            docker-compose run -e DB_HOST=$DB_HOST web python console.py
-            docker-compose run -e DB_PORT=$DB_PORT web python console.py
+            docker-compose run -e SECRET_KEY=$SECRET_KEY web python manage.py
+            docker-compose run -e DB_NAME=$DB_NAME web python python manage.py
+            docker-compose run -e DB_USER=$DB_USER web python python manage.py
+            docker-compose run -e DB_PASSWORD=$DB_PASSWORD web python manage.py
+            docker-compose run -e DB_HOST=$DB_HOST web python manage.py
+            docker-compose run -e DB_PORT=$DB_PORT web python manage.py
       - run:
           name: Start all services declared in docker-compose.yml
           command: docker-compose up
