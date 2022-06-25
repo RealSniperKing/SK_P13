@@ -62,16 +62,13 @@ jobs:
           name: build
           command: docker-compose build
       - run:
-          name: docker stat
-          command: docker-compose ps
+          name: Start all services declared in docker-compose.yml
+          command: docker-compose up -d
       - run:
           name: migrate
           command: |
             docker-compose run web python manage.py makemigrations
             docker-compose run web python manage.py migrate
-      - run:
-          name: Start all services declared in docker-compose.yml
-          command: docker-compose up
       - run:
           name: docker stat
           command: docker-compose ps
