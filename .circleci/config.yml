@@ -73,9 +73,6 @@ jobs:
           name: docker stat
           command: docker-compose ps
       - run:
-          name: get ip
-          command: docker-machine ip dev
-      - run:
           name: update the image and restart the containers
           command: |
             docker-compose down --volumes
