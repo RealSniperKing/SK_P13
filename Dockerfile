@@ -1,5 +1,6 @@
 # pull official base image
 FROM python:3.9.6-alpine
+RUN python --version
 
 # Install postgres client
 RUN apk update
@@ -30,8 +31,11 @@ RUN pip install -r requirements_docker.txt
 RUN adduser -D user
 USER user
 
+
 FROM postgres:buster
 COPY docker-entrypoint-initdb.d/init.sql /docker-entrypoint-initdb.d/
-CMD ["docker-entrypoint.sh", "postgres"]
+
+#CMD ["docker-entrypoint.sh", "postgres"]
+
 #COPY docker-entrypoint-initdb.d/init.sql /docker-entrypoint-initdb.d
 #RUN chmod a+r /docker-entrypoint-initdb.d/*
