@@ -30,7 +30,6 @@ RUN pip install -r requirements_docker.txt
 RUN adduser -D user
 USER user
 
-FROM postgres:buster
-
+# FROM postgres:buster
 #COPY docker-entrypoint-initdb.d/init.sql /docker-entrypoint-initdb.d
 #RUN chmod a+r /docker-entrypoint-initdb.d/*
