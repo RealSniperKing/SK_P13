@@ -9,6 +9,7 @@ jobs:
         environment:
           DB_USER: $DB_USER
           DB_PASSWORD: $DB_PASSWORD
+    machine: true
     steps:
       - checkout
       - run: sudo apt-get update
@@ -51,9 +52,6 @@ jobs:
 #      docker-compose push
 #      docker logout
 #      - setup_remote_docker
-      - run:
-          name: run docker
-          command: service docker start
       - run:
           name: Build images of services declared in docker-compose.yml
           command: |
