@@ -10,7 +10,7 @@ services:
     restart: always
     environment:
       - POSTGRES_DB=ocl_database
-      - POSTGRES_USER=ocl_user
+      - POSTGRES_USER=example
       - POSTGRES_PASSWORD=ocl_password
   web:
     container_name: ocl-web
