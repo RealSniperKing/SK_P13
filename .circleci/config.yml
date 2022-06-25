@@ -9,7 +9,6 @@ jobs:
         environment:
           DB_USER: $DB_USER
           DB_PASSWORD: $DB_PASSWORD
-    machine: true
     steps:
       - checkout
       - run: sudo apt-get update
@@ -51,7 +50,8 @@ jobs:
 #      docker-compose up --build -d
 #      docker-compose push
 #      docker logout
-#      - setup_remote_docker
+      - setup_remote_docker
+          version: 20.10.14
       - run:
           name: Build images of services declared in docker-compose.yml
           command: |
