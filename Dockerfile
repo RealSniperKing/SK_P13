@@ -32,8 +32,8 @@ RUN adduser -D user
 USER user
 
 
-FROM postgres:buster
-COPY docker-entrypoint-initdb.d/init.sql /docker-entrypoint-initdb.d/
+# FROM postgres:buster
+# COPY docker-entrypoint-initdb.d/init.sql /docker-entrypoint-initdb.d/
 
 #CMD ["docker-entrypoint.sh", "postgres"]
 
