@@ -77,7 +77,8 @@ jobs:
           command: |
             docker-compose down --volumes
             docker-compose build
-            docker-compose up --force-recreate -d
+#            docker-compose up --force-recreate -d
+            docker-compose up
 
 #      - run:
 #          name: init db
