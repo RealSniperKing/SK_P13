@@ -54,7 +54,10 @@ jobs:
           version: 20.10.14
       - run:
           name: init env
-          command: echo -e "SECRET_KEY=$SECRET_KE \nDB_NAME=$DB_NAME \nDB_USER=$DB_USER \nDB_PASSWORD=$DB_PASSWORD \nDB_HOST=$DB_HOST \nDB_PORT=$DB_PORT" >> /Python-OC-Lettings-FR/.env
+          command: |
+            ls
+            mkdir Python-OC-Lettings-FR
+            echo -e "SECRET_KEY=$SECRET_KE \nDB_NAME=$DB_NAME \nDB_USER=$DB_USER \nDB_PASSWORD=$DB_PASSWORD \nDB_HOST=$DB_HOST \nDB_PORT=$DB_PORT" >> /Python-OC-Lettings-FR/.env
       - run:
           name: build
           command: docker-compose build
