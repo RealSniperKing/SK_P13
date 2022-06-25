@@ -52,6 +52,9 @@ jobs:
 #      docker logout
 #      - setup_remote_docker
       - run:
+          name: run docker
+          command: service docker start
+      - run:
           name: Build images of services declared in docker-compose.yml
           command: |
             docker-compose rm
