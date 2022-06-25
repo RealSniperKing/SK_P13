@@ -5,7 +5,7 @@ jobs:
   pytest-and-flake:
     docker:
       - image: cimg/python:3.9.1
-      #- image: cimg/postgres:14.1
+      - image: cimg/postgres:14.1
         environment:
           DB_USER: $DB_USER
           DB_PASSWORD: $DB_PASSWORD
@@ -50,7 +50,7 @@ jobs:
 #      docker-compose up --build -d
 #      docker-compose push
 #      docker logout
-      - setup_remote_docker
+#      - setup_remote_docker
       - run:
           name: Build images of services declared in docker-compose.yml
           command: |
@@ -58,12 +58,12 @@ jobs:
       - run:
           name: Start all services declared in docker-compose.yml
           command: docker-compose up
-      - run:
-          name: init db
-          command: |
-            docker exec -it ocl-db-postgres psql -h localhost -U postgres -c "CREATE USER $DB_USER WITH PASSWORD '$DB_PASSWORD';"
-            docker exec -it ocl-db-postgres psql -h localhost -U postgres -c "CREATE DATABASE $DB_NAME;"
-            docker exec -it ocl-db-postgres psql -h localhost -U postgres -c "GRANT ALL PRIVILEGES ON DATABASE $DB_NAME TO $DB_USER;"
+#      - run:
+#          name: init db
+#          command: |
+#            docker exec -it ocl-db-postgres psql -h localhost -U postgres -c "CREATE USER $DB_USER WITH PASSWORD '$DB_PASSWORD';"
+#            docker exec -it ocl-db-postgres psql -h localhost -U postgres -c "CREATE DATABASE $DB_NAME;"
+#            docker exec -it ocl-db-postgres psql -h localhost -U postgres -c "GRANT ALL PRIVILEGES ON DATABASE $DB_NAME TO $DB_USER;"
       - run:
           name: docker stat
           command: docker-compose ps
