@@ -5,7 +5,7 @@ services:
     image: postgres:buster
     container_name: ocl-db-postgres
     volumes:
-      - ./docker-entrypoint-initdb.d/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
       - ./data/db:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=ocl_database
