@@ -53,15 +53,17 @@ jobs:
       - setup_remote_docker:
           version: 20.10.14
       - run:
-          name: build
+          name: init env
           command: |
-            docker-compose build
             docker-compose run -e SECRET_KEY=$SECRET_KEY web
             docker-compose run -e DB_NAME=$DB_NAME web
             docker-compose run -e DB_USER=$DB_USER web
             docker-compose run -e DB_PASSWORD=$DB_PASSWORD web
             docker-compose run -e DB_HOST=$DB_HOST web
             docker-compose run -e DB_PORT=$DB_PORT web
+      - run:
+          name: build
+          command: docker-compose build
       - run:
           name: Start all services declared in docker-compose.yml
           command: docker-compose up
