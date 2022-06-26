@@ -67,8 +67,8 @@ jobs:
       - run:
           name: migrate
           command: |
-            docker-compose run web python manage.py makemigrations
-            docker-compose run web python manage.py migrate
+            docker-compose exec web python manage.py makemigrations
+            docker-compose exec web python manage.py migrate
       - run:
           name: docker stat
           command: docker-compose ps
