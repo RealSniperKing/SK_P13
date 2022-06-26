@@ -68,16 +68,21 @@ jobs:
           name: docker stat
           command: docker-compose ps
       - run:
+          name: migrate
+          command: |
+            docker-compose exec web python manage.py makemigrations
+            docker-compose exec web python manage.py migrate
+      - run:
           name: update the image and restart the containers
           command: |
             docker-compose down --volumes
             docker-compose build
-            docker-compose up
-#      - run:
-#          name: migrate
-#          command: |
-#            docker-compose exec web python manage.py makemigrations
-#            docker-compose exec web python manage.py migrate
+      - run:
+          name: push
+          command: |
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker-compose push
+
 #      - run:
 #          name: init db
 #          command: |

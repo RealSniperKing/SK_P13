@@ -25,4 +25,5 @@ services:
     restart: always
     depends_on:
       - db
+    image: lucky3d/cci_ocl:tagname
 
