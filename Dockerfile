@@ -31,8 +31,8 @@ RUN pip install -r requirements_docker.txt
 RUN adduser -D user
 USER user
 
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+# COPY entrypoint.sh /entrypoint.sh
+# RUN chmod +x /entrypoint.sh
 
 
 # FROM postgres:buster

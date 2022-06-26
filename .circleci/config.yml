@@ -65,11 +65,6 @@ jobs:
           name: Start all services declared in docker-compose.yml
           command: docker-compose up -d
       - run:
-          name: migrate
-          command: |
-            docker-compose exec web python manage.py makemigrations
-            docker-compose exec web python manage.py migrate
-      - run:
           name: docker stat
           command: docker-compose ps
       - run:
@@ -78,7 +73,11 @@ jobs:
             docker-compose down --volumes
             docker-compose build
             docker-compose up
-
+#      - run:
+#          name: migrate
+#          command: |
+#            docker-compose exec web python manage.py makemigrations
+#            docker-compose exec web python manage.py migrate
 #      - run:
 #          name: init db
 #          command: |

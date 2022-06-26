@@ -13,7 +13,6 @@ services:
       - POSTGRES_USER=example
       - POSTGRES_PASSWORD=ocl_password
   web:
-    entrypoint: /entrypoint.sh
     container_name: ocl-web
     build: .
     command: python manage.py runserver 0.0.0.0:8000
