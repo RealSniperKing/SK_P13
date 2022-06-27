@@ -56,7 +56,7 @@ jobs:
           name: init env
           command: |
             ls -a
-            echo -e "SECRET_KEY=$SECRET_KE \nDB_NAME=$DB_NAME \nDB_USER=$DB_USER \nDB_PASSWORD=$DB_PASSWORD \nDB_HOST=db \nDB_PORT=$DB_PORT" >> .env
+            echo -e "SECRET_KEY=$SECRET_KE \nDB_NAME=$DB_NAME \nDB_USER=$DB_USER \nDB_PASSWORD=$DB_PASSWORD \nDB_HOST=db \nDB_PORT=$DB_PORT \nTAG=0.1.$CIRCLE_BUILD_NUM" >> .env
             ls -a
       - run:
           name: build
@@ -81,7 +81,6 @@ jobs:
           name: push
           command: |
             docker login -u $DOCKER_USER -p $DOCKER_PASS
-            export TAG=0.1.$CIRCLE_BUILD_NUM
             docker-compose push
 
 #      - run:
