@@ -73,17 +73,15 @@ jobs:
             docker-compose exec web python manage.py makemigrations
             docker-compose exec web python manage.py migrate
       - run:
-          name: init db
-          command: |
-            docker-compose exec web psql -h localhost -U $DB_USER $DB_NAME -c "-i create_datas.sql"
-      - run:
           name: docker images
           command: docker images
-#      - run:
-#          name: push postges
-#          command: |
-#            docker tag postgres lucky3d/cci_ocl
-#            docker push lucky3d/cci_ocl
+      - run:
+          name: push postgres
+          command: |
+            docker pull postgres:buster
+            docker tag postgres:buster lucky3d/cci_ocl:some_tag
+            docker push lucky3d/cci_ocl:some_tag
+
 #      - run:
 #          name: push
 #          command: |
