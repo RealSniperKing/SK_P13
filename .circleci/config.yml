@@ -81,6 +81,7 @@ jobs:
           name: push
           command: |
             docker login -u $DOCKER_USER -p $DOCKER_PASS
+            export TAG=0.1.$CIRCLE_BUILD_NUM
             docker-compose push
 
 #      - run:
