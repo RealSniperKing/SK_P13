@@ -81,7 +81,7 @@ jobs:
       - run:
           name: bash
           command: |
-            docker-compose exec ocl-db-postgres psql -U $DB_USER -W $DB_NAME
+            docker-compose exec db psql -U $DB_USER -W $DB_NAME
 
 
 #      - run:
