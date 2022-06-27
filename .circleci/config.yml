@@ -81,9 +81,6 @@ jobs:
           command: |
             docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker-compose push
-      - run:
-          name: dokcer images
-          command:
 #      - run:
 #          name: Start app
 #          command: docker-compose up
