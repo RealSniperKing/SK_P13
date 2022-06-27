@@ -67,7 +67,7 @@ jobs:
       - run:
           name: docker stat
           command: docker-compose ps
-        - run:
+      - run:
           name: docker container
           command: docker ps
       - run:
