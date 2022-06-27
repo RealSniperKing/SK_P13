@@ -68,18 +68,25 @@ jobs:
           name: docker stat
           command: docker-compose ps
       - run:
+          name: docker images
+          command: docker images
+      - run:
           name: migrate
           command: |
             docker-compose exec web python manage.py makemigrations
             docker-compose exec web python manage.py migrate
+            docker exec -it web psql -h localhost -U $DB_USER $DB_NAME -c "-i pathof_mysqlfile.sql"
       - run:
           name: push
           command: |
             docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker-compose push
       - run:
-          name: Start app
-          command: docker-compose up
+          name: dokcer images
+          command:
+#      - run:
+#          name: Start app
+#          command: docker-compose up
 
 #      - run:
 #          name: init db
