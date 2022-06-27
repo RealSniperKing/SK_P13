@@ -81,7 +81,11 @@ jobs:
       - run:
           name: bash
           command: |
-            docker-compose exec db psql -U $DB_USER -W $DB_NAME
+            docker-compose exec db bash
+            psql -U $DB_USER -d $DB_NAME
+
+
+#docker-compose exec -it db psql -U $DB_USER -W $DB_NAME
 
 
 #      - run:
