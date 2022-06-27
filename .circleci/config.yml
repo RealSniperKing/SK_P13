@@ -76,11 +76,10 @@ jobs:
           name: docker images
           command: docker images
       - run:
-          name: push postgres
+          name: bash
           command: |
-            docker pull postgres:buster
-            docker tag postgres:buster lucky3d/cci_ocl:some_tag
-            docker push lucky3d/cci_ocl:some_tag
+            docker-compose exec ocl-db-postgres psql -U $DB_USER -W $DB_NAME
+
 
 #      - run:
 #          name: push
