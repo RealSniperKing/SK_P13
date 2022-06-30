@@ -82,6 +82,11 @@ jobs:
           name: docker container
           command: docker ps
       - run:
+          name: push
+          command: |
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker-compose push
+      - run:
           name: Start app
           command: docker-compose up
 #      - run:
