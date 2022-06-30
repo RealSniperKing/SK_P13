@@ -5,7 +5,8 @@ services:
     image: postgres:buster
     container_name: ocl-db-postgres
     volumes:
-      - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+      - $PWD./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+      - ./data/db:/var/lib/postgresql/data
     restart: always
     environment:
       - POSTGRES_DB=ocl_database
@@ -25,4 +26,7 @@ services:
     depends_on:
       - db
     image: lucky3d/cci_ocl:${TAG}
+
+volumes:
+  sql:
 
