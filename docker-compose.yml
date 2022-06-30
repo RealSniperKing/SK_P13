@@ -5,7 +5,6 @@ services:
     image: postgres:buster
     container_name: ocl-db-postgres
     volumes:
-      - ./data/db:/var/lib/postgresql/data
       - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
     restart: always
     environment:
