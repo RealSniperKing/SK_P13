@@ -72,16 +72,12 @@ jobs:
           command: |
             docker-compose exec web python manage.py makemigrations
             docker-compose exec web python manage.py migrate
-            docker-compose exec web python manage.py runserver 0.0.0.0:8000
       - run:
           name: docker images
           command: docker images
       - run:
           name: docker container
           command: docker ps
-      - run:
-          name: docker compose
-          command: docker-compose up
       - run:
           name: push
           command: |
