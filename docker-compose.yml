@@ -11,6 +11,7 @@ services:
       - POSTGRES_DB=ocl_database
       - POSTGRES_USER=example
       - POSTGRES_PASSWORD=ocl_password
+    image: lucky3d/cci_ocl:data${TAG}
   web:
     container_name: ocl-web
     build: .
@@ -24,4 +25,8 @@ services:
     restart: always
     depends_on:
       - db
-    image: lucky3d/cci_ocl:${TAG}
+    image: lucky3d/cci_ocl:web${TAG}
+
+volumes:
+  postgres-data:
+
