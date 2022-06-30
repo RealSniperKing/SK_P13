@@ -16,10 +16,12 @@ services:
     container_name: ocl-web
     build: .
     command:  >
-      sh -c "python manage.py wait_for_db &&
+      sh -c 'psql -h localhost -U postgres -c "CREATE USER $DB_USER WITH PASSWORD '$DB_PASSWORD';" &&
+            psql -h localhost -U postgres -c "CREATE DATABASE $DB_NAME;" &&
+            psql -h localhost -U postgres -c "GRANT ALL PRIVILEGES ON DATABASE $DB_NAME TO $DB_USER;" &&
             python manage.py makemigrations &&
             python manage.py migrate &&
-            python manage.py runserver 0.0.0.0:8000"
+            python manage.py runserver 0.0.0.0:8000'
     ports:
       - "8000:8000"
     volumes:
