@@ -14,7 +14,10 @@ services:
   web:
     container_name: ocl-web
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    command: >
+      sh -C "python manage.py makemigrations
+            && python manage.py migrate
+            && python manage.py runserver 0.0.0.0:8000"
     ports:
       - "8000:8000"
     volumes:
