@@ -80,7 +80,7 @@ jobs:
           command: docker ps
       - run:
           name: docker compose
-          command: echo "TEST" | docker-compose exec db -it bash -c "PGPASSWORD=$DB_PASSWORD psql -U $DB_USER -d $DB_NAME"
+          command: docker-compose exec db sh"
 
 #            docker-compose exec db bash -c "PGPASSWORD=$DB_PASSWORD psql -U $DB_USER -d $DB_NAME"
 #      - run:
