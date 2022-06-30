@@ -60,7 +60,7 @@ jobs:
             ls -a
       - run:
           name: Start all services declared in docker-compose.yml
-          command: docker-compose up -d
+          command: docker-compose up -d --build
       - run:
           name: docker stat
           command: docker-compose ps
@@ -79,8 +79,8 @@ jobs:
           name: docker container
           command: docker ps
       - run:
-          name: Start app
-          command: docker-compose up
+          name: close dockers
+          command: docker-compose down
 #      - run:
 #          name: push
 #          command: |
