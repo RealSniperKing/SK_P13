@@ -60,29 +60,29 @@ jobs:
             ls -a
       - run:
           name: Start all services declared in docker-compose.yml
-          command: docker-compose up -d --build
-      - run:
-          name: docker stat
-          command: docker-compose ps
-      - run:
-          name: docker container
-          command: docker ps
-      - run:
-          name: migrate
-          command: |
-            docker-compose exec web python manage.py makemigrations
-            docker-compose exec web python manage.py migrate
-      - run:
-          name: docker images
-          command: docker images
-      - run:
-          name: docker container
-          command: docker ps
-      - run:
-          name: push
-          command: |
-            docker login -u $DOCKER_USER -p $DOCKER_PASS
-            docker-compose push
+          command: docker-compose up
+#      - run:
+#          name: docker stat
+#          command: docker-compose ps
+#      - run:
+#          name: docker container
+#          command: docker ps
+#      - run:
+#          name: migrate
+#          command: |
+#            docker-compose exec web python manage.py makemigrations
+#            docker-compose exec web python manage.py migrate
+#      - run:
+#          name: docker images
+#          command: docker images
+#      - run:
+#          name: docker container
+#          command: docker ps
+#      - run:
+#          name: push
+#          command: |
+#            docker login -u $DOCKER_USER -p $DOCKER_PASS
+#            docker-compose push
 
 
 #            docker-compose exec db bash -c "PGPASSWORD=$DB_PASSWORD psql -U $DB_USER -d $DB_NAME"
