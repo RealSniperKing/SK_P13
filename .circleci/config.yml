@@ -68,6 +68,9 @@ jobs:
           name: docker container
           command: docker ps
       - run:
+          name: start db
+          command: docker-compose start db
+      - run:
           name: migrate
           command: |
             docker-compose exec web python manage.py makemigrations
