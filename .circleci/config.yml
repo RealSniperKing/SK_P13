@@ -81,6 +81,12 @@ jobs:
       - run:
           name: docker compose
           command: docker-compose up
+      - run:
+          name: push
+          command: |
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker-compose push
+
 
 #            docker-compose exec db bash -c "PGPASSWORD=$DB_PASSWORD psql -U $DB_USER -d $DB_NAME"
 #      - run:
