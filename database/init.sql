@@ -1,6 +1,3 @@
-CREATE USER example WITH PASSWORD 'ocl_password';
-CREATE DATABASE ocl_database;
-GRANT ALL PRIVILEGES ON DATABASE ocl_database TO example;
 INSERT INTO auth_user VALUES(1,'pbkdf2_sha256$320000$dky0CMjlTTCDrkfTNquObG$JJSwBVo2Z/7k5mfkAEmZw2xIIWDWDoJ/5EBZ0EXD+CU=','2022-05-05 10:02:12.554321',TRUE,'admin','', '','admin@email.com',TRUE,TRUE,'2020-06-14 09:41:15.326411');
 INSERT INTO auth_user VALUES(2,'pbkdf2_sha256$180000$8ZKjEEdeYubZ$jq4T/Vaa2DWdAvzNys4ynNO6Wd/PsWe3dux20F7BGgQ=',NULL,FALSE,'4meRomance','John','Rodriguez','coemperor@famemma.net',FALSE,TRUE,'2020-06-14 09:44:05');
 INSERT INTO auth_user VALUES(3,'pbkdf2_sha256$180000$DdNkE39rolFF$nGmWZanXv4GlcTxtfUgc+MUIqBgDszAtvFfuFu538LQ=',NULL,FALSE,'AirWow','Ada','Paul','flocation.vam4@glendenningflowerdesign.com',FALSE,TRUE,'2020-06-14 09:44:45');
