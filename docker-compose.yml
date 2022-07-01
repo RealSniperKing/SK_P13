@@ -24,7 +24,6 @@ services:
       - .:/code
     env_file:
       - .env
-    restart: always
     depends_on:
       - db
     image: lucky3d/cci_ocl:web${TAG}
