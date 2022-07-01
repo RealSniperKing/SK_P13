@@ -84,6 +84,9 @@ jobs:
       - run:
           name: run server
           command: docker-compose up
+      - run:
+          name: run server
+          command: docker-compose run web python manage.py runserver 0.0.0.0:8000
 #      - run:
 #          name: push
 #          command: |
