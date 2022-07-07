@@ -1,5 +1,6 @@
 version: 2.1
 orbs:
+  # For using Heroku CLI commands
   heroku: circleci/heroku@1.2.6
 jobs:
   pytest-and-flake:
@@ -84,6 +85,14 @@ jobs:
       - run:
           name: run server
           command: docker-compose up -d
+      # Deploy to Heroku
+      - heroku/install
+      - run: heroku container:login
+      - heroku/push-docker-image:
+          process-types: web
+      - heroku/release-docker-image:
+          process-types: web
+
 #      - run:
 #          name: run server
 #          command: docker-compose run web python manage.py runserver 0.0.0.0:8000
@@ -157,9 +166,3 @@ workflows:
   build-and-test-workflow:
     jobs:
       - pytest-and-flake
-      - heroku/deploy-via-git:
-          requires:
-            - pytest-and-flake
-          filters:
-            branches:
-              only: main
