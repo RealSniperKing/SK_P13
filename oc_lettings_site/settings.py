@@ -67,6 +67,8 @@ WSGI_APPLICATION = 'oc_lettings_site.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+DATABASE_URL = str(os.environ['DATABASE_URL'])
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
