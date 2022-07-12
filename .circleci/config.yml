@@ -88,10 +88,11 @@ jobs:
       # Deploy to Heroku
       - heroku/install
       - run: heroku container:login
-      - heroku/push-docker-image:
-          process-types: web
-      - heroku/release-docker-image:
-          process-types: web
+      - run: heroku container:release web
+#      - heroku/push-docker-image:
+#          process-types: web
+#      - heroku/release-docker-image:
+#          process-types: web
       #- heroku/push-docker-image:
           #process-types: db
       #- heroku/release-docker-image:
