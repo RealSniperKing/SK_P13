@@ -88,7 +88,7 @@ jobs:
       # Deploy to Heroku
       - heroku/install
       - run: heroku container:login
-      - run: heroku container:release web
+      - run: heroku container:release web -app $HEROKU_APP_NAME
 #      - heroku/push-docker-image:
 #          process-types: web
 #      - heroku/release-docker-image:
