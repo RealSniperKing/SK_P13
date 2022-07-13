@@ -1,10 +1,10 @@
 # pull official base image
-FROM python:3.9.6-alpine
+FROM python:3.9.1
 RUN python --version
 
 # Install postgres client
 RUN apk update
-# RUN apk add postgresql-dev gcc python3-dev musl-dev
+#RUN apk add postgresql-dev gcc python3-dev musl-dev
 RUN apk --update add postgresql-client
 
 #maintainer
