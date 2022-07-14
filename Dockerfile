@@ -4,8 +4,8 @@ RUN python --version
 
 # Install postgres client
 RUN apk update
-# RUN apk add postgresql-dev gcc python3-dev musl-dev
-RUN apk --update add postgresql-client
+RUN apk add postgresql-dev gcc python3-dev musl-dev
+CMD psql --version
 # RUN sudo apt-get update
 # RUN sudo apt-get install postgresql-client
 # RUN psql --version
