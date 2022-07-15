@@ -26,9 +26,9 @@ jobs:
       - run: |
           pip install --upgrade pip
           pip install -r requirements.txt
-      - run:
-         name: flake8 checker
-         command: flake8 ./ --output-file test-reports.txt
+#      - run:
+#         name: flake8 checker
+#         command: flake8 ./ --output-file test-reports.txt
       - run:
          name: running migrations
          command: python manage.py migrate
@@ -86,12 +86,12 @@ jobs:
           name: run server
           command: docker-compose up -d
       # Deploy to Heroku
-      - heroku/install
-      - run: heroku container:login
-      - heroku/push-docker-image:
-          process-types: web
-      - heroku/release-docker-image:
-          process-types: web
+#      - heroku/install
+#      - run: heroku container:login
+#      - heroku/push-docker-image:
+#          process-types: web
+#      - heroku/release-docker-image:
+#          process-types: web
       #- heroku/push-docker-image:
           #process-types: db
       #- heroku/release-docker-image:
