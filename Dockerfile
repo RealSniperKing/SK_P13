@@ -3,12 +3,12 @@ FROM python:3.9.1
 RUN python --version
 
 # Install postgres client
-# RUN apk update
-# RUN apk add postgresql-dev gcc python3-dev musl-dev
-# CMD psql --version
-RUN sudo apt-get update
-RUN sudo apt-get install postgresql-client
+RUN apk update
+RUN apk add postgresql-dev gcc python3-dev musl-dev
 CMD psql --version
+# RUN sudo apt-get update
+# RUN sudo apt-get install postgresql-client
+# CMD psql --version
 
 #maintainer
 LABEL Author="Luc"
