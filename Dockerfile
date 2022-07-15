@@ -1,14 +1,14 @@
 # pull official base image
-FROM python:3.9.1
+FROM python:3.9.6-alpine
 RUN python --version
 
 # Install postgres client
 RUN apk update
 RUN apk add postgresql-dev gcc python3-dev musl-dev
-CMD psql --version
+# CMD psql --version
 # RUN sudo apt-get update
 # RUN sudo apt-get install postgresql-client
-# CMD psql --version
+# RUN psql --version
 
 #maintainer
 LABEL Author="Luc"
