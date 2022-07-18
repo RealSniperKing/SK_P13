@@ -86,8 +86,11 @@ jobs:
           name: run server
           command: docker-compose up -d
       # Deploy to Heroku
-#      - heroku/install
-#      - run: heroku container:login
+      - heroku/install
+      - run: heroku container:login
+      - run: heroku container:login
+      - run: heroku container:push web -a ocl
+      - run: heroku container:release web -a ocl
 #      - heroku/push-docker-image:
 #          process-types: web
 #      - heroku/release-docker-image:
