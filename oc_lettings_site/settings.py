@@ -117,14 +117,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-#location where django collect all static files
+# location where django collect all static files
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # location where you will store your static files
-STATICFILES_DIRS = [os.path.join(BASE_DIR,'Python-OC-Lettings-FR/static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'Python-OC-Lettings-FR/static')]
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR,'mediafiles')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
