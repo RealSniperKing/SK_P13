@@ -33,7 +33,7 @@ jobs:
          name: running migrations
          command: python manage.py migrate
       - run: |
-          psql -U $DB_USER $DB_NAME -c "\i database/init.sql;"
+          psql -h localhost -U $DB_USER $DB_NAME -c "\i database/init.sql;"
       - run:
          name: run tests
          command: pytest -s
