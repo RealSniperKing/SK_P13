@@ -5,6 +5,10 @@ FROM python:3.9.6-alpine
 # Install postgres client
 RUN apk update
 RUN apk add postgresql-dev gcc python3-dev musl-dev
+
+# Install python runtime
+# RUN apk --update add python3 py-pip py-gunicorn py-psycopg2 bash
+
 # CMD psql --version
 # RUN sudo apt-get update
 # RUN sudo apt-get install postgresql-client
@@ -39,6 +43,10 @@ RUN pip install -r requirements_docker.txt
 # Create a user that can run your container
 RUN adduser -D user
 USER user
+
+# Run the app.  CMD is required to run on Heroku
+CMD gunicorn oc_lettings_site.wsgi --log-file -
+
 
 # Run the app.  CMD is required to run on Heroku
 # $PORT is set by Heroku
