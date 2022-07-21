@@ -88,9 +88,9 @@ jobs:
       # Deploy to Heroku
       - heroku/install
       - run: heroku container:login
-      - run: heroku container:login
       - run: heroku container:push web -a ocl
       - run: heroku container:release web -a ocl
+      - run: PGUSER=$DB_USER PGPASSWORD=$DB_PASSWORD heroku pg:push postgres://localhost/$DB_NAME $HEROKU_BD_NAME -a ocl
 #      - heroku/push-docker-image:
 #          process-types: web
 #      - heroku/release-docker-image:
