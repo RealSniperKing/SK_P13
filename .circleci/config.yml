@@ -90,7 +90,7 @@ jobs:
       - run: heroku container:login
       - run: heroku container:push web -a ocl
       - run: heroku container:release web -a ocl
-      - run: heroku pg:reset DATABASE --confirm -a ocl
+      - run: heroku pg:reset DATABASE -a ocl --confirm ocl
       - run: PGUSER=$DB_USER PGPASSWORD=$DB_PASSWORD heroku pg:push postgres://localhost/$DB_NAME $HEROKU_BD_NAME -a ocl
 #      - heroku/push-docker-image:
 #          process-types: web
