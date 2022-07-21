@@ -1,5 +1,6 @@
 # pull official base image
-FROM python:3.9.1
+FROM python:3.9.6-alpine
+# RUN python --version
 
 # Install postgres client
 RUN apk update
