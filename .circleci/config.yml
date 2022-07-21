@@ -6,14 +6,14 @@ jobs:
   pytest-and-flake:
     docker:
       - image: cimg/python:3.10.5
-      - image: cimg/postgres:14.1
+      - image: cimg/postgres:12.11
         environment:
           DB_USER: $DB_USER
           DB_PASSWORD: $DB_PASSWORD
     steps:
       - checkout
       - run: sudo apt-get update
-      - run: sudo apt-get install postgresql-client-14.1
+      - run: sudo apt-get install postgresql-client
       - run: psql --version
       - run: |
          psql -h localhost -U postgres -c "CREATE USER $DB_USER WITH PASSWORD '$DB_PASSWORD';"
