@@ -32,9 +32,8 @@ jobs:
       - run:
          name: running migrations
          command: python manage.py migrate
-      - run:
-          name: init database
-          command: psql -h localhost -U postgres -c "\i database/init.sql;"
+      - run: |
+          psql -U $DB_USER $DB_NAME -c "\i database/init.sql;"
       - run:
          name: run tests
          command: pytest -s
