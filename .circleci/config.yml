@@ -20,7 +20,6 @@ jobs:
          psql -h localhost -U postgres -c "CREATE DATABASE $DB_NAME;"
          psql -h localhost -U postgres -c "GRANT ALL PRIVILEGES ON DATABASE $DB_NAME TO $DB_USER;"
          psql -h localhost -U postgres -c "ALTER USER $DB_USER CREATEDB;"
-         psql -h localhost -U postgres -c "\i database/init.sql;"
       - run:
          name: check TEST environment variable
          command: echo $DB_TEST
@@ -33,6 +32,9 @@ jobs:
       - run:
          name: running migrations
          command: python manage.py migrate
+      - run:
+          name: init database
+          command: psql -h localhost -U postgres -c "\i database/init.sql;"
       - run:
          name: run tests
          command: pytest -s
