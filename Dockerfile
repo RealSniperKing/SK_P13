@@ -1,12 +1,9 @@
 # pull official base image
 FROM python:3.9.1
-# RUN python --version
 
 # Install postgres client
-# RUN apk update
-# RUN apk add postgresql-dev gcc python3-dev musl-dev
-RUN sudo apt-get update
-RUN sudo apt-get install postgresql-client
+RUN apk update
+RUN apk add postgresql-dev gcc python3-dev musl-dev
 
 # Install python runtime
 # RUN apk --update add python3 py-pip py-gunicorn py-psycopg2 bash
