@@ -129,3 +129,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 django_heroku.settings(locals())
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://ocl.herokuapp.com'
+]
