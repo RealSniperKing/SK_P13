@@ -53,7 +53,7 @@ jobs:
                 name: init env
                 command: |
                   ls -a
-                  echo -e "SECRET_KEY=$SECRET_KE \nDB_NAME=$DB_NAME \nDB_USER=$DB_USER \nDB_PASSWORD=$DB_PASSWORD \nDB_HOST=db \nDB_PORT=$DB_PORT \nTAG=0.1.$CIRCLE_BUILD_NUM" >> .env
+                  echo -e "SECRET_KEY=$SECRET_KE \nDB_NAME=$DB_NAME \nDB_USER=$DB_USER \nDB_PASSWORD=$DB_PASSWORD \nDB_HOST=db \nDB_PORT=$DB_PORT \nSENTRY_DSN=$SENTRY_DSN \nTAG=0.1.$CIRCLE_BUILD_NUM" >> .env
                   ls -a
 
             # Docker compose
