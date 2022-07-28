@@ -97,7 +97,7 @@ jobs:
             - run: heroku container:login
             - run: heroku create $HEROKU_APP_NAME
             # Attach existing database
-            - run: heroku addons:attach $HEROKU_DB_NAME -a $HEROKU_APP_NAME --as DATABASE_URL
+            - run: heroku addons:attach $HEROKU_DB_NAME -a $HEROKU_APP_NAME --as DATABASE_TEST
             # Push app
             - run: heroku container:push web -a $HEROKU_APP_NAME
             - run: heroku container:release web -a $HEROKU_APP_NAME
