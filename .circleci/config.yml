@@ -95,9 +95,9 @@ jobs:
             # Deploy to Heroku
             - heroku/install
             - run: heroku container:login
-            #- run: heroku apps:destroy $HEROKU_APP_NAME
             - run: heroku create $HEROKU_APP_NAME
-            - run: heroku addons:create heroku-postgresql:hobby-dev
+            #- run: heroku addons:create heroku-postgresql:hobby-dev
+            - run: heroku addons:attach $HEROKU_BD_NAME -a $HEROKU_APP_NAME --as DATABASE_URL
             - run: heroku container:push web -a $HEROKU_APP_NAME
             - run: heroku container:release web -a $HEROKU_APP_NAME
             - run: heroku pg:reset DATABASE -a $HEROKU_APP_NAME --confirm $HEROKU_APP_NAME
