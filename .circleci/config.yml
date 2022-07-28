@@ -97,15 +97,16 @@ jobs:
             - run: heroku container:login
             - run: heroku create $HEROKU_APP_NAME
             # Attach existing database
-            - run: heroku addons:attach $HEROKU_DB_NAME -a $HEROKU_APP_NAME --as DATABASE_TEST
+            - run: heroku addons:attach $HEROKU_DB_NAME -a $HEROKU_APP_NAME --as DATABASE
             # Push app
             - run: heroku container:push web -a $HEROKU_APP_NAME
             - run: heroku container:release web -a $HEROKU_APP_NAME
             # Set environment variables
             - run: heroku config:set DB_HOST=$HEROKU_DB_HOST -a $HEROKU_APP_NAME
             - run: heroku config:set DB_NAME=$HEROKU_DB_NAME -a $HEROKU_APP_NAME
+            - run: heroku config:set DB_PORT=$DB_PORT -a $HEROKU_APP_NAME
             - run: heroku config:set DB_PASSWORD=$HEROKU_DB_PASSWORD -a $HEROKU_APP_NAME
-            - run: heroku config:set DB_USER=HEROKU_DB_USER -a $HEROKU_APP_NAME
+            - run: heroku config:set DB_USER=$HEROKU_DB_USER -a $HEROKU_APP_NAME
             - run: heroku config:set DEBUG=$DEBUG -a $HEROKU_APP_NAME
             - run: heroku config:set SECRET_KEY=$SECRET_KEY -a $HEROKU_APP_NAME
             - run: heroku config:set SENTRY_DSN=$SENTRY_DSN -a $HEROKU_APP_NAME
