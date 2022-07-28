@@ -95,7 +95,7 @@ jobs:
             # Deploy to Heroku
             - heroku/install
             - run: heroku container:login
-            - run: heroku apps:destroy -a $HEROKU_APP_NAME --confirm $HEROKU_APP_NAME
+            #- run: heroku apps:destroy -a $HEROKU_APP_NAME --confirm $HEROKU_APP_NAME
             - run: heroku create $HEROKU_APP_NAME
             # Attach existing database
             - run: heroku addons:attach $HEROKU_DB_NAME -a $HEROKU_APP_NAME --as DATABASE
