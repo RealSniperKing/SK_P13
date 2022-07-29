@@ -66,14 +66,19 @@ jobs:
             - run:
                 name: docker container
                 command: docker ps
-            - run:
-                name: start db
-                command: docker-compose start db
+            #- run:
+            # name: start db
+            # command: docker-compose start db
             - run:
                 name: migrate
                 command: |
                   docker-compose run web python manage.py makemigrations
                   docker-compose run web python manage.py migrate
+            - run:
+                name: init db
+                command: |
+                  docker-compose exec db psql -U ocl_user ocl_database
+                  \dt
             - run:
                 name: docker images
                 command: docker images
