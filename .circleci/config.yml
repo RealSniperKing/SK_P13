@@ -74,8 +74,8 @@ jobs:
                 command: |
                   docker-compose run web python manage.py makemigrations
                   docker-compose run web python manage.py migrate
-            #- run:
-            name: init docker db
+            - run:
+                name: init docker db
                 command: |
                   docker-compose exec db psql -U $DB_USER $DB_NAME
                   \dt
