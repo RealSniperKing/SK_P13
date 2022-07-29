@@ -66,14 +66,17 @@ jobs:
             - run:
                 name: docker container
                 command: docker ps
+            - run:
+                name: Run web and db to background
+                command: docker-compose up -d
             #- run:
             # name: start db
             # command: docker-compose start db
-            # - run:
-            # name: migrate
-            # command: |
-            # docker-compose run web python manage.py makemigrations
-            # docker-compose run web python manage.py migrate
+            #- run:
+            #name: migrate
+            #command: |
+            #docker-compose run web python manage.py makemigrations
+            #docker-compose run web python manage.py migrate
             - run:
                 name: init docker db
                 command: |
