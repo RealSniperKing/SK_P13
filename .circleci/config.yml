@@ -106,7 +106,8 @@ jobs:
             - run: heroku create --region eu $HEROKU_APP_NAME
             # Attach existing database
             #- run: heroku addons:attach $HEROKU_DB_NAME -a $HEROKU_APP_NAME --as DATABASE
-            - run: heroku addons:create heroku-postgresql:hobby-dev --app $HEROKU_APP_NAME --name $HEROKU_DB_NAME postgresql-ocl-$CIRCLE_BUILD_NUM
+            - run: heroku addons:create heroku-postgresql:hobby-dev --app $HEROKU_APP_NAME
+            # --name $HEROKU_DB_NAME oc-lettings-01
             # Push app
             - run: heroku container:push web -a $HEROKU_APP_NAME
             - run: heroku container:release web -a $HEROKU_APP_NAME
