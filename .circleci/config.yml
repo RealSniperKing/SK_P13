@@ -106,7 +106,7 @@ jobs:
             - run: heroku create --region eu $HEROKU_APP_NAME
             # Attach existing database
             #- run: heroku addons:attach $HEROKU_DB_NAME -a $HEROKU_APP_NAME --as DATABASE
-            - run: heroku addons:create heroku-postgresql:hobby-dev --app $HEROKU_APP_NAME
+            - run: heroku addons:create heroku-postgresql:hobby-dev --app $HEROKU_APP_NAME --name $HEROKU_DB_NAME
             # Push app
             - run: heroku container:push web -a $HEROKU_APP_NAME
             - run: heroku container:release web -a $HEROKU_APP_NAME
@@ -116,9 +116,9 @@ jobs:
             #- run: heroku config:set DB_PORT=$DB_PORT -a $HEROKU_APP_NAME
             #- run: heroku config:set DB_PASSWORD=$HEROKU_DB_PASSWORD -a $HEROKU_APP_NAME
             #- run: heroku config:set DB_USER=$HEROKU_DB_USER -a $HEROKU_APP_NAME
-            #- run: heroku config:set DEBUG=$DEBUG -a $HEROKU_APP_NAME
-            #- run: heroku config:set SECRET_KEY=$SECRET_KEY -a $HEROKU_APP_NAME
-            #- run: heroku config:set SENTRY_DSN=$SENTRY_DSN -a $HEROKU_APP_NAME
+            - run: heroku config:set DEBUG=$DEBUG -a $HEROKU_APP_NAME
+            - run: heroku config:set SECRET_KEY=$SECRET_KEY -a $HEROKU_APP_NAME
+            - run: heroku config:set SENTRY_DSN=$SENTRY_DSN -a $HEROKU_APP_NAME
             # Reset database and copy variables
             - run: heroku pg:reset DATABASE -a $HEROKU_APP_NAME --confirm $HEROKU_APP_NAME
             - run: PGUSER=$DB_USER PGPASSWORD=$DB_PASSWORD heroku pg:push postgres://localhost/$DB_NAME DATABASE_URL -a $HEROKU_APP_NAME
