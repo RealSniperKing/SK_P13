@@ -5,6 +5,8 @@ import django_heroku
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
+load_dotenv()
+
 sentry_sdk.init(
     dsn=os.getenv('SENTRY_DSN'),
     integrations=[
@@ -20,8 +22,6 @@ sentry_sdk.init(
     # django.contrib.auth) you may enable sending PII data.
     send_default_pii=True
 )
-
-load_dotenv()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -39,10 +39,9 @@ DEBUG = True
 ALLOWED_HOSTS = ['0.0.0.0',
                  'localhost',
                  '127.0.0.1',
-                 f"{os.getenv('HEROKU_APP_NAME')}.herokuapp.com"]
+                 str(f"{os.getenv('HEROKU_APP_NAME')}.herokuapp.com")]
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -153,5 +152,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 django_heroku.settings(locals())
 
 CSRF_TRUSTED_ORIGINS = [
-    f'https://{os.getenv("HEROKU_APP_NAME")}.herokuapp.com'
+    str(f'https://{os.getenv("HEROKU_APP_NAME")}.herokuapp.com')
 ]
