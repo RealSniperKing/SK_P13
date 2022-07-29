@@ -77,7 +77,10 @@ jobs:
             - run:
                 name: init docker db
                 command: |
-                  docker-compose exec db psql -U $DB_USER $DB_NAME -c"\dt" \ -c"\i docker-entrypoint-initdb.d/init.sql;" \ -c"\q"
+                  docker-compose exec db psql -U $DB_USER $DB_NAME \
+                  -c"\dt" \
+                  -c"\i docker-entrypoint-initdb.d/init.sql;" \
+                  -c"\q"
             - run:
                 name: docker images
                 command: docker images
