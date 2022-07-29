@@ -36,7 +36,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'oc-lettings-01.herokuapp.com']
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', f"{os.getenv('HEROKU_APP_NAME')}.herokuapp.com"]
 
 # Application definition
 
@@ -150,5 +150,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 django_heroku.settings(locals())
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://ocl.herokuapp.com'
+    f'https://{os.getenv("HEROKU_APP_NAME")}.herokuapp.com'
 ]
